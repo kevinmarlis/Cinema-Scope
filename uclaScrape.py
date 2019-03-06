@@ -37,8 +37,6 @@ def scrape(url):
         date = container.parent.parent.parent.parent.get('data-date')
         dates.append(date)
 
-
-
         link = 'https://www.cinema.ucla.edu' + container.find('a').get('href')
         links.append(link)
 

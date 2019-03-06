@@ -27,7 +27,6 @@ def scrape(url):
     html_soup = BeautifulSoup(response.text, 'lxml')
     event_containers = html_soup.find_all(class_="view-item view-item-calendar")
 
-
     for container in event_containers:
         date = container.parent.parent.get('id')
         date = date[9:]
@@ -37,7 +36,7 @@ def scrape(url):
         title = container.a.text.encode('utf-8')
         titles.append(title)
 
-        link = 'http://www.americancinemathequecalendar.com/' + container.find('a').get('href')
+        link = 'http://www.americancinemathequecalendar.com' + container.find('a').get('href')
         links.append(link)
 
         time = container.span.text
@@ -57,6 +56,6 @@ test_df = pd.DataFrame({'date': dates,
 
 test_df = test_df[['date', 'movie', 'location', 'time', 'link']]
 
-#print(test_df.info())
-#print test_df
-#test_df.to_csv('AC.csv')
+print(test_df.info())
+print test_df
+test_df.to_csv('AC.csv')
